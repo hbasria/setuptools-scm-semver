@@ -4,5 +4,5 @@ exclude .pre-commit-config.yaml
 include *.py
 include tests/*.py
 include tox.ini
-include *.md
+include *.rst
 include LICENSE

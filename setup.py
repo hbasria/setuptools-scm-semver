@@ -32,7 +32,7 @@ def scm_config():
         return dict(version=get_version(root=here, parse=parse, **config))
 
 
-with open("README.md") as fp:
+with open("README.rst") as fp:
     long_description = fp.read()
 
 meta = dict(
