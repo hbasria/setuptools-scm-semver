@@ -1,10 +1,14 @@
-from setuptools_scm import Configuration, meta
-from setuptools_scm.git import DEFAULT_DESCRIBE, warn_on_shallow, GitWorkdir, _git_parse_describe
+from setuptools_scm import Configuration
+from setuptools_scm import meta
+from setuptools_scm.git import _git_parse_describe
+from setuptools_scm.git import DEFAULT_DESCRIBE
+from setuptools_scm.git import GitWorkdir
+from setuptools_scm.git import warn_on_shallow
 from setuptools_scm.utils import has_command
 
 
 def parse(
-        root, describe_command=DEFAULT_DESCRIBE, pre_parse=warn_on_shallow, config=None
+    root, describe_command=DEFAULT_DESCRIBE, pre_parse=warn_on_shallow, config=None
 ):
     """
     :param pre_parse: experimental pre_parse action, may change at any time

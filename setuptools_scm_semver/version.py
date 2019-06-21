@@ -9,7 +9,9 @@ SEMVER_PATCH = 3
 SEMVER_LEN = 3
 
 
-def format_next_version(guess_next, version=None, fmt="{guessed}-beta.{distance}", **kw):
+def format_next_version(
+    guess_next, version=None, fmt="{guessed}-beta.{distance}", **kw
+):
     guessed = guess_next(version.tag, **kw)
 
     if version.branch == "master":
@@ -40,6 +42,10 @@ def guess_next_semver_version(version):
         return guess_next_simple_semver(version.tag, retain=SEMVER_LEN, increment=False)
     else:
         if version.branch is not None and "feature" in version.branch:
-            return format_next_version(guess_next_simple_semver, version=version, retain=SEMVER_MINOR)
+            return format_next_version(
+                guess_next_simple_semver, version=version, retain=SEMVER_MINOR
+            )
         else:
-            return format_next_version(guess_next_simple_semver, version=version, retain=SEMVER_PATCH)
+            return format_next_version(
+                guess_next_simple_semver, version=version, retain=SEMVER_PATCH
+            )

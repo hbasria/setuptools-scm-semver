@@ -1,6 +1,6 @@
 import itertools
-
 import os
+
 import pytest
 
 os.environ["SETUPTOOLS_SCM_DEBUG"] = "1"
@@ -65,7 +65,10 @@ class Wd(object):
         from setuptools_scm import get_version
         from setuptools_scm.hacks import parse_pkginfo
         from setuptools_scm_semver.git import parse as parse_git
-        from setuptools_scm_semver.version import guess_next_semver_version, get_local_empty
+        from setuptools_scm_semver.version import (
+            guess_next_semver_version,
+            get_local_empty,
+        )
 
         def parse(root, config=None):
             try:
@@ -73,11 +76,14 @@ class Wd(object):
             except IOError:
                 return parse_git(root, config=config)
 
-        version = get_version(root=str(self.cwd), fallback_root=str(self.cwd),
-                              parse=parse,
-                              version_scheme=guess_next_semver_version,
-                              local_scheme=get_local_empty,
-                              **kw)
+        version = get_version(
+            root=str(self.cwd),
+            fallback_root=str(self.cwd),
+            parse=parse,
+            version_scheme=guess_next_semver_version,
+            local_scheme=get_local_empty,
+            **kw
+        )
 
         return version
 

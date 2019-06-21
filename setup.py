@@ -22,7 +22,9 @@ def scm_config():
         except IOError:
             return parse_git(root)
 
-    config = dict(version_scheme=guess_next_semver_version, local_scheme=get_local_empty)
+    config = dict(
+        version_scheme=guess_next_semver_version, local_scheme=get_local_empty
+    )
 
     if has_entrypoints:
         return dict(use_scm_version=config)
@@ -49,12 +51,12 @@ meta = dict(
     entry_points="""
         [setuptools_scm.parse_scm]
         .git = setuptools_scm_semver.git:parse
-            
+
         [setuptools_scm.version_scheme]
         guess-next-semver = setuptools_scm_semver.version:guess_next_semver_version
-        
+
         [setuptools_scm.local_scheme]
-        get-local-empty = setuptools_scm_semver.version:get_local_empty        
+        get-local-empty = setuptools_scm_semver.version:get_local_empty
     """,
     classifiers=[
         "Development Status :: 4 - Beta",
