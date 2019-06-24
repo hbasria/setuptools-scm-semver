@@ -4,6 +4,8 @@ import sys
 import setuptools
 
 
+
+
 def scm_config():
     here = os.path.dirname(os.path.abspath(__file__))
     egg_info = os.path.join(here, "setuptools_scm_semver.egg-info")
