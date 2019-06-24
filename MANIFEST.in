@@ -1,8 +1,6 @@
-exclude *.nix
-exclude .travis.yaml
 exclude .pre-commit-config.yaml
 include *.py
 include tests/*.py
 include tox.ini
-include *.rst
+include *.md
 include LICENSE
