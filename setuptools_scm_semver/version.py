@@ -13,22 +13,23 @@ def format_next_version(
     guess_next, version=None, fmt="{guessed}-beta.{distance}", **kw
 ):
     guessed = guess_next(version.tag, **kw)
+    branch = os.environ.get("BRANCH_NAME", version.branch)
 
-    if version.branch == "master":
+    if branch == "master":
         fmt = "{guessed}"
-    elif version.branch == "release":
+    elif branch == "release":
         fmt = "{guessed}-rc.{distance}"
-    elif version.branch.startswith("PR"):
+    elif branch.startswith("feature"):
+        fmt = "{guessed}-alpha.{distance}"
+    elif branch.startswith("PR"):
         target_branch = os.environ.get("CHANGE_TARGET")
 
         if target_branch == "master":
             fmt = "{guessed}"
         elif target_branch == "release":
             fmt = "{guessed}-rc.{distance}"
-        else:
+        elif target_branch == "develop":
             fmt = "{guessed}-alpha.{distance}"
-    elif version.branch.startswith("feature"):
-        fmt = "{guessed}-alpha.{distance}"
 
     return version.format_with(fmt, guessed=guessed)
 
