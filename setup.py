@@ -4,8 +4,6 @@ import sys
 import setuptools
 
 
-
-
 def scm_config():
     here = os.path.dirname(os.path.abspath(__file__))
     egg_info = os.path.join(here, "setuptools_scm_semver.egg-info")
@@ -80,5 +78,4 @@ meta = dict(
 )
 
 if __name__ == "__main__":
-    meta.update(scm_config())
     setuptools.setup(**meta)
